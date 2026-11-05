@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Азамат Спецтехника | Вывоз мусора и Bobcat в Бишкеке</title>
+    <style>
+        /* Плавный скролл при клике на навигацию */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0f1115;
+            color: #f3f4f6;
+            line-height: 1.6;
+        }
+
+        /* Шапка сайта зафиксирована наверху */
+        .navbar {
+            background-color: #181c24;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #ff1e27;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #ff1e27;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        .nav-link {
+            color: #9ca3af;
+            text-decoration: none;
+            padding: 8px 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            background-color: #ff1e27;
+        }
+
+        /* Главный баннер */
+        .hero {
+            text-align: center;
+            padding: 140px 20px 80px;
+            /* Отступ сверху, чтобы меню не перекрывало текст */
+            background: linear-gradient(135px, #0f1115, rgba(255, 30, 39, 0.15));
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #9ca3af;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Секции для перемотки */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 90px 20px 30px;
+            /* Отступ компенсирует закрепленное меню */
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+        }
+
+        /* Сетка для услуг */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #181c24;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-header h3 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .card-header .label {
+            color: #ffb703;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .list {
+            list-style: none;
+        }
+
+        .list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff1e27;
+            font-weight: 900;
+        }
+
+        /* Галерея техники */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 260px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 20px;
+        }
+
+        .gallery-info h4 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .gallery-info p {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Контакты */
+        .wrapper {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #181c24;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .geo {
+            color: #ffb703;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .phone {
+            font-size: 2.3rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .phone:hover {
+            color: #ff1e27;
+        }
+
+        .manager {
+            font-size: 1.2rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+            display: block;
+        }
+
+        .links-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
+        .btn-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .btn-call {
+            background-color: #ff1e27;
+        }
+
+        .btn-call:hover {
+            background-color: #d6151c;
+        }
+
+        .btn-wa {
+            background-color: #25D366;
+        }
+
+        .btn-wa:hover {
+            background-color: #1ebd57;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 60px;
+        }
+
+        @media (max-width: 680px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .phone {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Шапка со ссылками-якорями (#ID) для перемотки -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">АЗАМАТ <span>СПЕЦТЕХНИКА</span></a>
+            <div class="nav-menu">
+                <a href="#services" class="nav-link">Услуги</a>
+                <a href="#gallery" class="nav-link">Техника</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный блок -->
+    <header class="hero">
+        <h1>Вывоз мусора & Услуги BOBCAT</h1>
+        <p>Любые объемы. Любые задачи. Собственный автопарк техники в Бишкеке и Чуйской области.</p>
+    </header>
+
+    <!-- Раздел Услуг -->
+    <section id="services" class="section">
+        <h2 class="section-title">Наши услуги</h2>
+        <div class="grid">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Вывоз мусора & Самосвал</h3>
+                    <div class="label">Mitsubishi Canter (3 тонны)</div>
+                </div>
+                <div class="card-body">
+                    <ul class="list">
+                        <li>Вывоз строительного мусора (щебень, песок, грунт, бой, кирпич и т.д.)</li>
+                        <li>Доставка и вывоз щебня (любой фракции)</li>
+                        <li>Доставка и вывоз песка (речной, карьерный)</li>
+                        <li>Вывоз лишнего грунта</li>
+                        <li>Перевозка стройматериалов (по договоренности)</li>
+                        <li>Уборка территории, дворов, участков</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Услуги BOBCAT</h3>
+                    <div class="label">TCM 707SSL (мини-погрузчик)</div>
+                </div>
+                <div class="card-body">
+                    <ul class="list">
+                        <li>Планировка и выравнивание участков, дворов</li>
+                        <li>Копка котлованов (под фундамент, септик и т.д.)</li>
+                        <li>Погрузка и разгрузка (щебень, песок, грунт, стройматериалы)</li>
+                        <li>Демонтаж (мелкие постройки,amp; бетон, старые конструкции)</li>
+                        <li>Расчистка участков (деревья, кусты, корни)</li>
+                        <li>Работа в труднодоступных местах</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Раздел Техники -->
+    <section id="gallery" class="section">
+        <h2 class="section-title">Наша спецтехника</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://unsplash.com" alt="Mitsubishi Canter">
+                <div class="gallery-info">
+    </section>
+    <!-- Раздел Контактов -->
+    <section id="contacts" class="section">
+        <h2 class="section-title">Контакты</h2>
+        <div class="wrapper">
+            <p class="geo">📍 Бишкек и Чуйская область (Выезжаем в любой район)</p>
+
+            <a href="tel:+996500706419" class="phone">+996 500 706 419</a>
+            <span class="manager">АЗАМАТ</span>
+
+            <div class="links-stack">
+                <a href="tel:+996500706419" class="btn-link btn-call">📞 Позвонить напрямую</a>
+                <a href="https://wa.me" target="_blank" class="btn-link btn-wa">💬 Написать в WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer>
+        &copy; 2026 Азамат Спецтехника. Надежная техника — ваши задачи в надежных руках!
+    </footer>
+
+</body>
+
+</html>
